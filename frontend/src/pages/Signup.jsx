@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import "../css/auth.css";
 
 function Signup() {
   const [usuario, setUsuario] = useState("");
@@ -63,7 +64,7 @@ function Signup() {
   };
 
   return (
-    <div style={{ maxWidth: 400, margin: "100px auto", textAlign: "center" }}>
+    <div className="auth-container">
       <h2>Registro</h2>
       <form onSubmit={handleSignup}>
         <div style={{ marginBottom: 16 }}>

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import "../css/auth.css";
 
 function Login() {
   const [usuario, setUsuario] = useState("");
@@ -69,13 +70,7 @@ function Login() {
   };
 
   return (
-    <div
-      style={{
-        maxWidth: 400,
-        margin: "100px auto",
-        textAlign: "center",
-      }}
-    >
+    <div className="auth-container">
       <h2>Iniciar Sesión</h2>
       <form onSubmit={login}>
         <div style={{ marginBottom: 16 }}>
@@ -112,6 +107,15 @@ function Login() {
       >
         Registrarse
       </button>
+      <div style={{ marginTop: 24, color: "#b71c1c", fontWeight: "bold", fontSize: "1rem" }}>
+        ¡Advertencia!<br />
+        Como el backend no está desplegado, las funciones de inicio de sesión pueden no funcionar si no se inicia correctamente <code>app.py</code>.<br />
+        <span style={{ color: "#2e7d32", textDecoration: "underline", cursor: "pointer" }}
+          onClick={() => navigate("/menu")}
+        >
+          Ir al menú (sin iniciar sesión)
+        </span>
+      </div>
     </div>
   );
 }

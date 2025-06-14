@@ -1,6 +1,7 @@
 import React from "react";
 import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import "./../css/menu.css";
 import Dashboard from "./menu/Dashboard.jsx";
 import Historial from "./menu/Historial.jsx";
 import Alertas from "./menu/Alertas.jsx";
@@ -24,8 +25,9 @@ const MenuAdm = () => {
         credentials: "include",
       });
 
+      localStorage.removeItem("token"); // Elimina el token siempre
+
       if (response.ok) {
-        localStorage.removeItem("token");
         Swal.fire({
           icon: "success",
           title: "Sesión cerrada",
@@ -33,22 +35,26 @@ const MenuAdm = () => {
           timer: 2000,
           timerProgressBar: true,
           showConfirmButton: false,
-        }).then(() => {
-          navigate("/");
         });
+        navigate("/"); // Redirige al login inmediatamente
       } else {
         const errorData = await response.json();
         Swal.fire({
           icon: "error",
           title: "Error al cerrar sesión",
           text: errorData.message || "Algo salió mal.",
+        }).then(() => {
+          navigate("/"); // Redirige al login aunque haya error
         });
       }
     } catch (error) {
+      localStorage.removeItem("token");
       Swal.fire({
         icon: "error",
         title: "Error",
         text: "Hubo un error al cerrar sesión. Por favor, inténtalo de nuevo.",
+      }).then(() => {
+        navigate("/"); // Redirige al login aunque haya error
       });
     }
   };
@@ -56,45 +62,45 @@ const MenuAdm = () => {
   return (
     <div>
       <nav className="navbar">
-        <div className="navbar-brand">EcoOficce Admin</div>
+        <div className="navbar-brand">EcoOficce</div>
         <ul className="navbar-links">
           <li>
-            <Link to="/admin/dashboard" className="navbar-link">
+            <Link to="/menu/dashboard" className="navbar-link">
               Dashboard
             </Link>
           </li>
           <li>
-            <Link to="/admin/historial" className="navbar-link">
+            <Link to="/menu/historial" className="navbar-link">
               Historial
             </Link>
           </li>
           <li>
-            <Link to="/admin/alertas" className="navbar-link">
+            <Link to="/menu/alertas" className="navbar-link">
               Alertas
             </Link>
           </li>
           <li>
-            <Link to="/admin/iot" className="navbar-link">
+            <Link to="/menu/iot" className="navbar-link">
               Integración IoT
             </Link>
           </li>
           <li>
-            <Link to="/admin/dispositivos" className="navbar-link">
+            <Link to="/menu/dispositivos" className="navbar-link">
               Gestión de Dispositivos
             </Link>
           </li>
           <li>
-            <Link to="/admin/exportacion" className="navbar-link">
+            <Link to="/menu/exportacion" className="navbar-link">
               Exportación
             </Link>
           </li>
           <li>
-            <Link to="/admin/analisis" className="navbar-link">
+            <Link to="/menu/analisis" className="navbar-link">
               Análisis
             </Link>
           </li>
           <li>
-            <Link to="/admin/perfil" className="navbar-link">
+            <Link to="/menu/perfil" className="navbar-link">
               Perfil
             </Link>
           </li>
