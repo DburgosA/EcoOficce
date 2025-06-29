@@ -5,7 +5,6 @@ import "./../css/menu.css";
 import Dashboard from "./menu/Dashboard.jsx";
 import Historial from "./menu/Historial.jsx";
 import Alertas from "./menu/Alertas.jsx";
-import IntegracionIoT from "./menu/IntegracionIoT.jsx";
 import GestionDispositivos from "./menu/GestionDispositivos.jsx";
 import Exportacion from "./menu/Exportacion.jsx";
 import Analisis from "./menu/Analisis.jsx";
@@ -80,11 +79,6 @@ const MenuAdm = () => {
             </Link>
           </li>
           <li>
-            <Link to="/menu/iot" className="navbar-link">
-              Integración IoT
-            </Link>
-          </li>
-          <li>
             <Link to="/menu/dispositivos" className="navbar-link">
               Gestión de Dispositivos
             </Link>
@@ -117,7 +111,6 @@ const MenuAdm = () => {
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="historial" element={<Historial />} />
           <Route path="alertas" element={<Alertas />} />
-          <Route path="iot" element={<IntegracionIoT />} />
           <Route path="dispositivos" element={<GestionDispositivos />} />
           <Route path="exportacion" element={<Exportacion />} />
           <Route path="analisis" element={<Analisis />} />

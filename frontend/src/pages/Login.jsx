@@ -39,7 +39,7 @@ function Login() {
             text: "Éxito: Bienvenido Administrador",
             confirmButtonText: "Continuar",
           }).then(() => {
-            navigate("/admin");
+            navigate("/menu");
           });
         } else {
           Swal.fire({
@@ -48,7 +48,7 @@ function Login() {
             text: "Éxito: Bienvenido Usuario",
             confirmButtonText: "Continuar",
           }).then(() => {
-            navigate("/usuario");
+            navigate("/menu");
           });
         }
       } else {
